@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="utf-8">
+        <title>Calculadora Básica</title>
+    </head>
+ 
+    <body>
+        <form action="calculadora.php" method="get">
+ 
+            Primeiro número:
+            <input name="num1" type="text" />
+            <br /> <br />
+             
+            Segundo número:
+            <input name="num2" type="text" />
+            <br /> <br />
+
+            Operação:
+            <input type="radio" id="soma"
+            name="operacao" value="soma">
+            <label for="soma">Soma</label>
+
+            <input type="radio" id="subtracao"
+            name="operacao" value="subtracao">
+            <label for="subtracao">Subtração</label>
+
+            <input type="radio" id="multiplicacao"
+            name="operacao" value="multiplicacao">
+            <label for="Multiplicação">Multiplicação</label>
+
+             <input type="radio" id="divisao"
+            name="operacao" value="divisao">
+            <label for="divisao">Divisão</label>
+             
+            <input type="submit" value="calcular" />    
+            <br /> <br />
+             
+        </form>
+    </body>
+</html>
+
