@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <title>Prod Manager</title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="./style/style_pages.css">
+
+    <style>
+        body {
+            background-color: #A020F0;
+        }
+    </style>
+
+    <script>
+
+        function altera() {
+            let carrega = document.getElementById("formula");
+            let objProduto = document.getElementById("cb");
+            let xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+                    let objeto = JSON.parse(this.responseText);
+                    console.log(objeto);
+                    carrega.nome.value = objeto['nome'];
+                    carrega.id.value = objeto['id'];
+                    carrega.qtd.value = objeto['qtd'];
+                    carrega.categoria.value = objeto['categoria'];
+                    carrega.valor_prod.value = objeto['valor_prod'];
+                    carrega.data.value = objeto['datas'];
+                    carrega.tipo.value = objeto['tipo'];
+                    carrega.desc.value = objeto['descr'];
+                    carrega.codBarras.value = objeto['codBarras'];
+                    carrega.peso.value = objeto['peso'];
+                    carrega.fabricante.value = objeto['fabricante'];
+
+                }
+
+            }
+
+            xmlHttp.open("GET", "https://localhost/Prod_Manager/alterar.php?id=" + objProduto.id.value, true);
+
+
+            xmlHttp.send();
+            console.log("Requisição enviada");
+        }
+
+
+
+
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="collapse navbar-collapse">
+
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Menu Principal</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="add_prod.html">Adicionar Produto</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="alterar.html">Alterar Produto</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="listar_todas.php">Listar todos os Produtos</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="listar.html">Listar um Produto</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="apagar2.html">Remover um Produto</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <div id="content" class="mx-auto center">
+
+        <p>Digite o ID do Produto que deseja alterar :</p>
+
+        <form id="cb" class="form-row" method="GET" style="margin-bottom: 85px;">
+
+            <div class="form-group col-sm-4 mx-auto">
+                <input type="num" class="form-control" id="id" name="id" placeholder="Informe o Id do Produto:">
+            </div>
+
+            <div class="form-group col-sm-12">
+                <input class="btn btn-primary" type="button" name="enviar" onclick="altera()" value="Enviar">
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+    <div id="content" class="mx-auto">
+
+        <form id="formula" class="form-row" method="GET" style="margin-bottom: 85px;">
+
+            <div class="col-sm-12">
+                <label for="nome">Nome do Produto</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Insira o nome do Produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="id">Código do Produto</label>
+                <input type="number" class="form-control" id="id" name="id" placeholder="Insira o Código do Produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="qtd">Quantidade</label>
+                <input type="number" class="form-control  " id="qtd" name="qtd"
+                    placeholder="Insira a quantidade do produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="categoria">Categoria</label>
+                <input type="text" class="form-control qtd" id="categoria" name="categoria"
+                    placeholder="Insira a categoria do produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="valor_prod">Valor do Produto</label>
+                <input type="number" class="form-control valor_prod" id="valor_prod" name="valor_prod"
+                    placeholder="Insira o valor do produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="data">Data</label>
+                <input type="date" class="form-control data" id="data" name="data"
+                    placeholder="Insira a data de inclusão">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="tipo">Tipo</label>
+                <input type="text" class="form-control tipo" id="tipo" name="tipo"
+                    placeholder="Insira o tipo do produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="desc">Descrição</label>
+                <input type="text" class="form-control desc" id="desc" name="desc"
+                    placeholder="Insira a descrição produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="codBarras">Código de Barras</label>
+                <input type="number" class="form-control codBarras" id="codBarras" name="codBarras"
+                    placeholder="Insira a descrição produto">
+            </div>
+
+            <div class="col-sm-12">
+                <label for="peso">Peso</label>
+                <input type="number" class="form-control peso" id="peso" name="peso"
+                    placeholder="Insira a descrição produto">
+            </div>
+
+
+            <div class="col-sm-12">
+                <label for="fabricante">Fabricante</label>
+                <input type="text" class="form-control fabricante" id="fabricante" name="fabricante"
+                    placeholder="Insira o nome do fabricante">
+            </div>
+
+
+            <div class="form-group col-md-12">
+                <input type="button" class="btn btn-primary" value="Enviar" name="enviar" onclick="altr()">
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+</body>
+
+<script>
+    function altr() {
+
+        let objProduto = document.getElementById("formula");
+        let xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                alert(this.responseText);
+            }
+        }
+        xmlHttp.open("GET", "https://localhost/Prod_Manager/carregaAlterar.php?nome=" + objProduto.nome.value +
+            "&id=" + objProduto.id.value + "&qtd=" + objProduto.qtd.value + "&categoria=" +
+            objProduto.categoria.value + "&valor_prod=" + objProduto.valor_prod.value + "&data=" + objProduto.data.value + "&desc=" + objProduto.desc.value + "&codBarras=" + objProduto.codBarras.values + "&peso=" + objProduto.peso.value + "&tipo=" + objProduto.tipo.value + "&fabricante=" + objProduto.fabricante.value, true);
+        xmlHttp.send();
+        console.log("requisição enviada");
+    }
+</script>
+
+
+</html>
